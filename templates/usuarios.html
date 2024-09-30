@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios Registrados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #ff4500;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuarios Registrados</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Hobby</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario['nombre'] }}</td>
+            <td>{{ usuario['edad'] }}</td>
+            <td>{{ usuario['hobby'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="volver">
+        <a href="/">Volver a la página inicial</a>
+    </div>
+</body>
+</html>

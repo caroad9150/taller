@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interacción con Flask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e63900;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .volver, .ver-usuarios {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .ver-usuarios a {
+            text-decoration: none;
+            background-color: #ff4500;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .ver-usuarios a:hover {
+            background-color: #e63900;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Bienvenidos al Taller de Flask!</h1>
+    
+    <p>Contador de visitas: {{ contador }}</p>
+    
+    {% if nombre %}
+        <div class="resultado">
+            <h2>¡Hola, {{ nombre }}!</h2>
+            <p>Tenes {{ edad }} años y tu hobby es {{ hobby }}.</p>
+        </div>
+        <div class="volver">
+            <form method="GET">
+                <button type="submit">Volver a la página inicial</button>
+            </form>
+        </div>
+    {% else %}
+        <form method="POST">
+            <label for="nombre">Ingresa tu nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="edad">Ingresa tu edad:</label>
+            <input type="number" id="edad" name="edad" required>
+            
+            <label for="hobby">¿Cuál es tu hobby favorito?</label>
+            <input type="text" id="hobby" name="hobby" required>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    {% endif %}
+    
+    <!-- Botón para ver la lista de usuarios -->
+    <div class="ver-usuarios">
+        <a href="{{ url_for('mostrar_usuarios') }}">Ver Usuarios Registrados</a>
+    </div>
+
+</body>
+</html>
